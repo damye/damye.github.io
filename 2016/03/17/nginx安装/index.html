@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nginx," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Yao's House" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x914D;&amp;#x7F6E;Linux&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4E0A;&amp;#x7684;web&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x65F6;&amp;#xFF0C;&amp;#x4E86;&amp;#x89E3;&amp;#x5230;nginx&amp;#x7684;&amp;#x76F8;&amp;#x5F53;&amp;#x725B;&amp;#x63B0;&amp;#xFF0C;&amp;#x56E0;&amp;#x6B64;&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx安装">
+<meta property="og:url" content="http://yoursite.com/2016/03/17/nginx安装/index.html">
+<meta property="og:site_name" content="Yao's House">
+<meta property="og:description" content="&amp;#x914D;&amp;#x7F6E;Linux&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4E0A;&amp;#x7684;web&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x65F6;&amp;#xFF0C;&amp;#x4E86;&amp;#x89E3;&amp;#x5230;nginx&amp;#x7684;&amp;#x76F8;&amp;#x5F53;&amp;#x725B;&amp;#x63B0;&amp;#xFF0C;&amp;#x56E0;&amp;#x6B64;&amp;#x">
+<meta property="og:updated_time" content="2016-03-17T08:26:49.059Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx安装">
+<meta name="twitter:description" content="&amp;#x914D;&amp;#x7F6E;Linux&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4E0A;&amp;#x7684;web&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x65F6;&amp;#xFF0C;&amp;#x4E86;&amp;#x89E3;&amp;#x5230;nginx&amp;#x7684;&amp;#x76F8;&amp;#x5F53;&amp;#x725B;&amp;#x63B0;&amp;#xFF0C;&amp;#x56E0;&amp;#x6B64;&amp;#x">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nginx安装 | Yao's House </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yao's House</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Calm down, and keep on walking!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nginx安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-17T12:19:12+08:00" content="2016-03-17">
+              2016-03-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x914D;&#x7F6E;Linux&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;web&#x670D;&#x52A1;&#x5668;&#x65F6;&#xFF0C;&#x4E86;&#x89E3;&#x5230;nginx&#x7684;&#x76F8;&#x5F53;&#x725B;&#x63B0;&#xFF0C;&#x56E0;&#x6B64;&#x9009;&#x7528;&#x4E86;nginx&#xFF0C;&#x4F46;&#x5B89;&#x88C5;&#x3001;&#x5378;&#x8F7D;&#x3001;&#x914D;&#x7F6E;&#x4E2D;&#x9047;&#x5230;&#x4E86;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x6B64;&#x5904;&#x505A;&#x4E0B;&#x7B80;&#x8981;&#x7684;&#x7B14;&#x8BB0;&#x3002;<br>&#x672C;&#x673A;&#x73AF;&#x5883;&#xFF1A;</p>
+<blockquote>
+<p>CentOS 7<br>php&#x7248;&#x672C; 5.6.17</p>
+</blockquote>
+<h3 id="&#x5B89;&#x88C5;&#x4F9D;&#x8D56;"><a href="#&#x5B89;&#x88C5;&#x4F9D;&#x8D56;" class="headerlink" title="&#x5B89;&#x88C5;&#x4F9D;&#x8D56;"></a>&#x5B89;&#x88C5;&#x4F9D;&#x8D56;</h3><p>nginx&#x4F9D;&#x8D56;&#x4E8E;zlib&#x3001;pcre&#x3001;OpenSSL&#x4E09;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5B89;&#x88C5;nginx&#x4E4B;&#x524D;&#x9700;&#x8981;&#x5148;&#x5B89;&#x88C5;&#x8FD9;&#x4E9B;&#x4F9D;&#x8D56;&#x3002;&#x4E3A;&#x4E86;&#x4FDD;&#x9669;&#x8D77;&#x89C1;&#xFF0C;&#x672C;&#x6587;&#x5B89;&#x88C5;nginx&#x4E4B;&#x524D;&#xFF0C;&#x518D;&#x5B89;&#x88C5;&#x4E00;&#x904D;&#x3002;&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#x4E3A;&#x6E90;&#x7801;&#x5B89;&#x88C5;&#x3002;<br>&#x4EE5;&#x4E0B;&#x4E3A;&#x672C;&#x6587;&#x7684;&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0D;&#x540C;&#x65F6;&#x5019;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5DEE;&#x5F02;&#xFF0C;&#x82E5;&#x53C2;&#x7167;&#x4E14;check&#x7248;&#x672C;&#x3002;<br>&#x5B89;&#x88C5;zlib<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5B89;&#x88C5;zlib</span></span><br><span class="line">wget http://zlib.net/zlib-<span class="number">1.2</span>.<span class="number">8</span>.tar.gz</span><br><span class="line">tar -zxvf zlib-<span class="number">1.2</span>.<span class="number">8</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> zlib-<span class="number">1.2</span>.<span class="number">8</span></span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; install </span><br><span class="line"></span><br><span class="line">&#x5B89;&#x88C5;pcre</span><br><span class="line">wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-<span class="number">8.38</span>.tar.gz</span><br><span class="line">tar -zxvf pcre-<span class="number">8.38</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> pcre-<span class="number">8.38</span></span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; install </span><br><span class="line"></span><br><span class="line">&#x5B89;&#x88C5;openssl</span><br><span class="line">wget http://www.openssl.org/<span class="built_in">source</span>/openssl-<span class="number">1.0</span>.<span class="number">2</span>g.tar.gz</span><br><span class="line">tar -zxvf popenssl-<span class="number">1.0</span>.<span class="number">2</span>g.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-<span class="number">1.0</span>.<span class="number">2</span>g</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; install</span><br></pre></td></tr></table></figure></p>
+<p>&#x82E5;&#x6CA1;&#x62A5;&#x9519;(error)&#xFF0C;&#x6269;&#x5C55;&#x5219;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;nginx"><a href="#&#x5B89;&#x88C5;nginx" class="headerlink" title="&#x5B89;&#x88C5;nginx"></a>&#x5B89;&#x88C5;nginx</h3><p>&#x4F7F;&#x7528;wget&#x83B7;&#x53D6;nginx&#x538B;&#x7F29;&#x6587;&#x4EF6;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-<span class="number">1.8</span>.<span class="number">1</span>.tar.gz</span><br><span class="line">tar -zxvf nginx-<span class="number">1.8</span>.<span class="number">1</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-<span class="number">1.8</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x7136;&#x540E;&#x662F;&#x914D;&#x7F6E;&#x53CA;&#x7F16;&#x8BD1;&#x3002;&#x7F16;&#x8BD1;&#x524D;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;<code>./configure &#x2013;help</code>&#x67E5;&#x770B;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x53C2;&#x7167;help&#x6587;&#x6863;&#x6216;&#x8005;<a href="http://seanlook.com/2015/05/17/nginx-install-and-config/" target="_blank" rel="external">&#x4ED6;&#x4EEC;&#x7B14;&#x8BB0;</a>&#x3002;<br>&#x672C;&#x6587;&#x6B64;&#x5904;&#x914D;&#x7F6E;&#x4E3A;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx \</span><br><span class="line">--sbin-path=/usr/<span class="built_in">local</span>/nginx/nginx \</span><br><span class="line">--conf-path=/usr/<span class="built_in">local</span>/nginx/nginx.conf \</span><br><span class="line">--pid-path=/usr/<span class="built_in">local</span>/nginx/nginx.pid \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-pcre=/root/installTemp/pcre-<span class="number">8.38</span> \</span><br><span class="line">--with-zlib=/root/installTemp/zlib-<span class="number">1.2</span>.<span class="number">8</span> \</span><br><span class="line">--with-openssl=/root/installTemp/openssl-<span class="number">1.0</span>.<span class="number">2</span>g</span><br></pre></td></tr></table></figure></p>
+<p>&#x5176;&#x4E2D;</p>
+<blockquote>
+<p>with-pcre=/root/installTemp/pcre-8.38 \<br>with-zlib=/root/installTemp/zlib-1.2.8 \<br>with-openssl=/root/installTemp/openssl-1.0.2g</p>
+</blockquote>
+<p>&#x662F;&#x6269;&#x5C55;&#x6A21;&#x5757;&#x7684;<code>&#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;</code>&#xFF0C;&#x975E;<code>&#x5B89;&#x88C5;&#x76EE;&#x5F55;</code>&#x3002;<br>&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#x540E;&#x7F16;&#x8BD1;&#x5373;&#x53EF;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<p>&#x65E0;error&#xFF0C;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;</p>
+<h3 id="&#x542F;&#x52A8;nginx"><a href="#&#x542F;&#x52A8;nginx" class="headerlink" title="&#x542F;&#x52A8;nginx"></a>&#x542F;&#x52A8;nginx</h3><p>nginx&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;80&#xFF0C;&#x82E5;&#x6709;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x5360;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x5728;<code>/user/local/nginx/nginx.conf</code>&#x4E2D;&#x7684;listen&#x6539;&#x4E3A;&#x5176;&#x4ED6;&#x3002;<br>&#x542F;&#x52A8;nginx&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/user/<span class="built_in">local</span>/nginx/nginx</span><br></pre></td></tr></table></figure></p>
+<p>&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tnl | grep <span class="number">80</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A;<ip>:port&#xFF0C;&#x5373;&#x53EF;&#x67E5;&#x770B;nginx&#x8FD0;&#x884C;&#x6548;&#x679C;&#x3002;</ip></p>
+<h3 id="reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>&#x7B14;&#x8BB0;&#xFF1A;<a href="https://www.zybuluo.com/phper/note/73025" target="_blank" rel="external">https://www.zybuluo.com/phper/note/73025</a></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/16/nginx-errors/" rel="next" title="nginx errors">
+                <i class="fa fa-chevron-left"></i> nginx errors
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/17/Laravel随笔（三）：优化相关/" rel="prev" title="Laravel随笔（三）：优化相关">
+                Laravel随笔（三）：优化相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="dam叶" />
+          <p class="site-author-name" itemprop="name">dam叶</p>
+          <p class="site-description motion-element" itemprop="description">Lazy boy owns lazy blog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/damye" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/your-user-name" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/damye" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖"><span class="nav-number">1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装nginx"><span class="nav-number">2.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动nginx"><span class="nav-number">3.</span> <span class="nav-text">启动nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dam叶</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
