@@ -224,6 +224,126 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/10/CentOS7更改hostname/" itemprop="url">
+                  CentOS7更改hostname
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-10T18:01:00+08:00" content="2016-03-10">
+              2016-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/10/CentOS7更改hostname/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/CentOS7更改hostname/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>&#xA0;&#xA0;&#x5728;CentOS&#x6216;RHEL&#x4E2D;&#xFF0C;&#x6709;&#x4E09;&#x79CD;&#x5B9A;&#x4E49;&#x7684;&#x4E3B;&#x673A;&#x540D;&#xFF1A;&#x9759;&#x6001;&#xFF08;static&#xFF09;&#x3001;&#x77AC;&#x65F6;&#xFF08;transient&#xFF09;&#x3001;&#x7075;&#x6D3B;&#xFF08;pretty&#xFF09;&#x3002;</p>
+<blockquote>
+<p>static&#xFF1A;&#x4EA6;&#x79F0;&#x5185;&#x6838;&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x65F6;&#x4ECE;/etc/hostname&#x4E2D;&#x81EA;&#x52A8;&#x8BFB;&#x53D6;&#x7684;&#x3002;&#x9075;&#x4ECE;&#x4E92;&#x8054;&#x7F51;&#x57DF;&#x540D;&#x5B57;&#x7B26;&#x9650;&#x5236;&#x89C4;&#x5219;<br>transient&#xFF1A;&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x65F6;&#x4E34;&#x65F6;&#x5206;&#x914D;&#x7684;&#xFF0C;&#x5982;DHCP&#x6216;mDNS&#x5206;&#x914D;&#x7684;&#x3002;&#x9075;&#x4ECE;&#x4E92;&#x8054;&#x7F51;&#x57DF;&#x540D;&#x5B57;&#x7B26;&#x9650;&#x5236;&#x89C4;&#x5219;<br>pretty&#xFF1A;&#x4F5C;&#x4E3A;&#x5C55;&#x793A;&#xFF0C;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x5F62;&#x5F0F;&#xFF08;&#x5305;&#x542B;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x3001;&#x7A7A;&#x767D;&#x7B49;&#xFF09;&#x7684;&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x5C55;&#x793A;&#x7ED9;&#x7528;&#x6237;</p>
+</blockquote>
+<h3 id="hostnamectl&#x5DE5;&#x5177;"><a href="#hostnamectl&#x5DE5;&#x5177;" class="headerlink" title="hostnamectl&#x5DE5;&#x5177;"></a>hostnamectl&#x5DE5;&#x5177;</h3><p>&#xA0;&#xA0;&#x5728;CentOS/RHEL 7&#x4E2D;&#xFF0C;&#x6709;&#x4E2A;&#x53EB;hostnamectl&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6216;&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<h4 id="&#x67E5;&#x770B;&#x4E3B;&#x673A;&#x540D;&#x76F8;&#x5173;&#x914D;&#x7F6E;"><a href="#&#x67E5;&#x770B;&#x4E3B;&#x673A;&#x540D;&#x76F8;&#x5173;&#x914D;&#x7F6E;" class="headerlink" title="&#x67E5;&#x770B;&#x4E3B;&#x673A;&#x540D;&#x76F8;&#x5173;&#x914D;&#x7F6E;"></a>&#x67E5;&#x770B;&#x4E3B;&#x673A;&#x540D;&#x76F8;&#x5173;&#x914D;&#x7F6E;</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#&#x8FD0;&#x884C;&#x547D;&#x4EE4;</span><br><span class="line">hostnamectl status</span><br></pre></td></tr></table></figure>
+<p>&#x53EF;&#x5F97;<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> Static hostname: iZ28xq5zwj6Z</span><br><span class="line">       Icon name: computer-vm</span><br><span class="line">         Chassis: vm</span><br><span class="line">      Machine ID: 45461f76679f48ee96e95da6cc798cc8</span><br><span class="line">         Boot ID: 085c24ed9080447eab7cd013d83df490</span><br><span class="line">  Virtualization: xen</span><br><span class="line">Operating System: CentOS Linux 7 (Core)</span><br><span class="line">     CPE OS Name: cpe:/o:centos:centos:7</span><br><span class="line">          Kernel: Linux 3.10.0-123.9.3.el7.x86_64</span><br><span class="line">    Architecture: x86-64</span><br></pre></td></tr></table></figure></p>
+<p>&#x53EA;&#x67E5;&#x770B;static&#x3001;transient&#x3001;pretty&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x53EF;&#x52A0;&#x4E0A;&#x589E;&#x52A0;&#x53C2;&#x6570;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#&#x8FD0;&#x884C;&#x547D;&#x4EE4;</span><br><span class="line">hostnamectl status [--static|--transient|--pretty]</span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;"><a href="#&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;" class="headerlink" title="&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;"></a>&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;</h4><p>&#x540C;&#x65F6;&#x4FEE;&#x6539;static&#x3001;transient&#x3001;pretty&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#root&#x6743;&#x9650;&#x8FD0;&#x884C;&#x547D;&#x4EE4;</span><br><span class="line">[root@iZ28xq5zwj6Z ~]# hostnamectl <span class="keyword">set</span>-<span class="built_in">hostname</span> <span class="string">&quot;Yao&apos;s Server&quot;</span></span><br><span class="line">#&#x67E5;&#x770B;</span><br><span class="line">[root@iZ28xq5zwj6Z ~]# hostnamectl status --static</span><br><span class="line">yaosserver</span><br><span class="line">[root@iZ28xq5zwj6Z ~]# hostnamectl status --transient</span><br><span class="line">yaosserver</span><br><span class="line">[root@iZ28xq5zwj6Z ~]# hostnamectl status --pretty</span><br><span class="line">Yao<span class="string">&apos;s Server</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x4FEE;&#x6539;static&#x4E3B;&#x673A;&#x540D;&#x540E;&#xFF0C;/etc/hostname&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x4F1A;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#xFF0C;&#x4F46;/etc/hosts&#x4E2D;&#x7684;&#x4E0D;&#x4F1A;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8C03;&#x6574;<br>&#x82E5;&#x8981;&#x5355;&#x72EC;&#x4FEE;&#x6539;static&#x3001;transient&#x3001;pretty&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#&#x8FD0;&#x884C;&#x547D;&#x4EE4;</span><br><span class="line">hostnamectl [--static|--transient|--pretty] <span class="keyword">set</span>-<span class="built_in">hostname</span> &lt;host-name&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://ask.xmodulo.com/change-hostname-centos-rhel-7.html" target="_blank" rel="external">http://ask.xmodulo.com/change-hostname-centos-rhel-7.html</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/10/Git别名、颜色配置/" itemprop="url">
                   Git别名、颜色配置
                 </a>
@@ -960,7 +1080,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -968,7 +1088,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -977,7 +1097,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
