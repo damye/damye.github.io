@@ -201,6 +201,254 @@
 
     
     
+      
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/17/nginx安装/" itemprop="url">
+                  nginx安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-17T12:19:12+08:00" content="2016-03-17">
+              2016-03-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/17/nginx安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/nginx安装/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x914D;&#x7F6E;Linux&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;web&#x670D;&#x52A1;&#x5668;&#x65F6;&#xFF0C;&#x4E86;&#x89E3;&#x5230;nginx&#x7684;&#x76F8;&#x5F53;&#x725B;&#x63B0;&#xFF0C;&#x56E0;&#x6B64;&#x9009;&#x7528;&#x4E86;nginx&#xFF0C;&#x4F46;&#x5B89;&#x88C5;&#x3001;&#x5378;&#x8F7D;&#x3001;&#x914D;&#x7F6E;&#x4E2D;&#x9047;&#x5230;&#x4E86;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x6B64;&#x5904;&#x505A;&#x4E0B;&#x7B80;&#x8981;&#x7684;&#x7B14;&#x8BB0;&#x3002;<br>&#x672C;&#x673A;&#x73AF;&#x5883;&#xFF1A;</p>
+<blockquote>
+<p>CentOS 7<br>php&#x7248;&#x672C; 5.6.17</p>
+</blockquote>
+<h3 id="&#x5B89;&#x88C5;&#x4F9D;&#x8D56;"><a href="#&#x5B89;&#x88C5;&#x4F9D;&#x8D56;" class="headerlink" title="&#x5B89;&#x88C5;&#x4F9D;&#x8D56;"></a>&#x5B89;&#x88C5;&#x4F9D;&#x8D56;</h3><p>nginx&#x4F9D;&#x8D56;&#x4E8E;zlib&#x3001;pcre&#x3001;OpenSSL&#x4E09;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5B89;&#x88C5;nginx&#x4E4B;&#x524D;&#x9700;&#x8981;&#x5148;&#x5B89;&#x88C5;&#x8FD9;&#x4E9B;&#x4F9D;&#x8D56;&#x3002;&#x4E3A;&#x4E86;&#x4FDD;&#x9669;&#x8D77;&#x89C1;&#xFF0C;&#x672C;&#x6587;&#x5B89;&#x88C5;nginx&#x4E4B;&#x524D;&#xFF0C;&#x518D;&#x5B89;&#x88C5;&#x4E00;&#x904D;&#x3002;&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#x4E3A;&#x6E90;&#x7801;&#x5B89;&#x88C5;&#x3002;<br>&#x4EE5;&#x4E0B;&#x4E3A;&#x672C;&#x6587;&#x7684;&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0D;&#x540C;&#x65F6;&#x5019;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5DEE;&#x5F02;&#xFF0C;&#x82E5;&#x53C2;&#x7167;&#x4E14;check&#x7248;&#x672C;&#x3002;<br>&#x5B89;&#x88C5;zlib<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5B89;&#x88C5;zlib</span></span><br><span class="line">wget http://zlib.net/zlib-<span class="number">1.2</span>.<span class="number">8</span>.tar.gz</span><br><span class="line">tar -zxvf zlib-<span class="number">1.2</span>.<span class="number">8</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> zlib-<span class="number">1.2</span>.<span class="number">8</span></span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; install </span><br><span class="line"></span><br><span class="line">&#x5B89;&#x88C5;pcre</span><br><span class="line">wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-<span class="number">8.38</span>.tar.gz</span><br><span class="line">tar -zxvf pcre-<span class="number">8.38</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> pcre-<span class="number">8.38</span></span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; install </span><br><span class="line"></span><br><span class="line">&#x5B89;&#x88C5;openssl</span><br><span class="line">wget http://www.openssl.org/<span class="built_in">source</span>/openssl-<span class="number">1.0</span>.<span class="number">2</span>g.tar.gz</span><br><span class="line">tar -zxvf popenssl-<span class="number">1.0</span>.<span class="number">2</span>g.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-<span class="number">1.0</span>.<span class="number">2</span>g</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; install</span><br></pre></td></tr></table></figure></p>
+<p>&#x82E5;&#x6CA1;&#x62A5;&#x9519;(error)&#xFF0C;&#x6269;&#x5C55;&#x5219;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;nginx"><a href="#&#x5B89;&#x88C5;nginx" class="headerlink" title="&#x5B89;&#x88C5;nginx"></a>&#x5B89;&#x88C5;nginx</h3><p>&#x4F7F;&#x7528;wget&#x83B7;&#x53D6;nginx&#x538B;&#x7F29;&#x6587;&#x4EF6;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-<span class="number">1.8</span>.<span class="number">1</span>.tar.gz</span><br><span class="line">tar -zxvf nginx-<span class="number">1.8</span>.<span class="number">1</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-<span class="number">1.8</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x7136;&#x540E;&#x662F;&#x914D;&#x7F6E;&#x53CA;&#x7F16;&#x8BD1;&#x3002;&#x7F16;&#x8BD1;&#x524D;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;<code>./configure &#x2013;help</code>&#x67E5;&#x770B;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x53C2;&#x7167;help&#x6587;&#x6863;&#x6216;&#x8005;<a href="http://seanlook.com/2015/05/17/nginx-install-and-config/" target="_blank" rel="external">&#x4ED6;&#x4EEC;&#x7B14;&#x8BB0;</a>&#x3002;<br>&#x672C;&#x6587;&#x6B64;&#x5904;&#x914D;&#x7F6E;&#x4E3A;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx \</span><br><span class="line">--sbin-path=/usr/<span class="built_in">local</span>/nginx/nginx \</span><br><span class="line">--conf-path=/usr/<span class="built_in">local</span>/nginx/nginx.conf \</span><br><span class="line">--pid-path=/usr/<span class="built_in">local</span>/nginx/nginx.pid \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-pcre=/root/installTemp/pcre-<span class="number">8.38</span> \</span><br><span class="line">--with-zlib=/root/installTemp/zlib-<span class="number">1.2</span>.<span class="number">8</span> \</span><br><span class="line">--with-openssl=/root/installTemp/openssl-<span class="number">1.0</span>.<span class="number">2</span>g</span><br></pre></td></tr></table></figure></p>
+<p>&#x5176;&#x4E2D;</p>
+<blockquote>
+<p>with-pcre=/root/installTemp/pcre-8.38 \<br>with-zlib=/root/installTemp/zlib-1.2.8 \<br>with-openssl=/root/installTemp/openssl-1.0.2g</p>
+</blockquote>
+<p>&#x662F;&#x6269;&#x5C55;&#x6A21;&#x5757;&#x7684;<code>&#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;</code>&#xFF0C;&#x975E;<code>&#x5B89;&#x88C5;&#x76EE;&#x5F55;</code>&#x3002;<br>&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#x540E;&#x7F16;&#x8BD1;&#x5373;&#x53EF;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<p>&#x65E0;error&#xFF0C;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;</p>
+<h3 id="&#x542F;&#x52A8;nginx"><a href="#&#x542F;&#x52A8;nginx" class="headerlink" title="&#x542F;&#x52A8;nginx"></a>&#x542F;&#x52A8;nginx</h3><p>nginx&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;80&#xFF0C;&#x82E5;&#x6709;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x5360;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x5728;<code>/user/local/nginx/nginx.conf</code>&#x4E2D;&#x7684;listen&#x6539;&#x4E3A;&#x5176;&#x4ED6;&#x3002;<br>&#x542F;&#x52A8;nginx&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/user/<span class="built_in">local</span>/nginx/nginx</span><br></pre></td></tr></table></figure></p>
+<p>&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tnl | grep <span class="number">80</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A;<ip>:port&#xFF0C;&#x5373;&#x53EF;&#x67E5;&#x770B;nginx&#x8FD0;&#x884C;&#x6548;&#x679C;&#x3002;</ip></p>
+<h3 id="reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>&#x7B14;&#x8BB0;&#xFF1A;<a href="https://www.zybuluo.com/phper/note/73025" target="_blank" rel="external">https://www.zybuluo.com/phper/note/73025</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/16/nginx-errors/" itemprop="url">
+                  nginx errors
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-16T20:08:29+08:00" content="2016-03-16">
+              2016-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/16/nginx-errors/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/nginx-errors/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x6B64;&#x4E3A;nginx&#x8C03;&#x8BD5;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;&#x53CA;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x4E3B;&#x8981;&#x4EE5;mark&#x4E3A;&#x4E3B;&#x3002;</p>
+<h3 id="&#x57FA;&#x672C;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;"><a href="#&#x57FA;&#x672C;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;" class="headerlink" title="&#x57FA;&#x672C;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;"></a>&#x57FA;&#x672C;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;</h3><h4 id="&#x65E5;&#x5FD7;"><a href="#&#x65E5;&#x5FD7;" class="headerlink" title="&#x65E5;&#x5FD7;"></a>&#x65E5;&#x5FD7;</h4><p>nginx&#x5728;conf&#x4E4B;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x65E5;&#x5FD7;&#x8DEF;&#x5F84;&#x53CA;&#x65E5;&#x5FD7;&#x683C;&#x5F0F;&#xFF0C;&#x5728;&#x82E5;&#x51FA;&#x73B0;&#x65E5;&#x5FD7;&#xFF0C;&#x6700;&#x597D;&#x628A;access log&#x548C;error log&#x6253;&#x5F00;&#xFF0C;&#x4EE5;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="&#x9519;&#x8BEF;&#x7C7B;&#x578B;1"><a href="#&#x9519;&#x8BEF;&#x7C7B;&#x578B;1" class="headerlink" title="&#x9519;&#x8BEF;&#x7C7B;&#x578B;1"></a>&#x9519;&#x8BEF;&#x7C7B;&#x578B;1</h4><p>&#x9519;&#x8BEF;&#x63D0;&#x793A;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span>/<span class="number">03</span>/<span class="number">16</span> <span class="number">18</span>:<span class="number">41</span>:<span class="number">42</span> [error] <span class="number">15849</span><span class="comment">#0: *32 open() &quot;/home/work/XXXX/XXX/public/XX&quot; failed (2: No such file or directory), client: 1.202.225.154, server: 115.28.75.150, request: &quot;GET /betme HTTP/1.1&quot;, host: &quot;115.28.75.150&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x8BE5;&#x9519;&#x8BEF;&#x4E3A;conf&#x6587;&#x4EF6;&#x4E2D;&#x8DEF;&#x5F84;&#x914D;&#x7F6E;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x53C2;&#x7167;<a href="http://www.cnblogs.com/xiaogangqq123/archive/2011/03/02/1969006.html" target="_blank" rel="external">nginx&#x914D;&#x7F6E;</a>&#x68C0;&#x67E5;&#x914D;&#x7F6E;&#x3002;</p>
+<h4 id="&#x9519;&#x8BEF;&#x63D0;&#x793A;2"><a href="#&#x9519;&#x8BEF;&#x63D0;&#x793A;2" class="headerlink" title="&#x9519;&#x8BEF;&#x63D0;&#x793A;2"></a>&#x9519;&#x8BEF;&#x63D0;&#x793A;2</h4><p>&#x9519;&#x8BEF;&#x63D0;&#x793A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span>/<span class="number">03</span>/<span class="number">16</span> <span class="number">18</span>:<span class="number">43</span>:<span class="number">31</span> [error] <span class="number">15849</span><span class="comment">#0: *34 connect() failed (111: Connection refused) while connecting to upstream, client: 107.151.226.203, server: 115.28.75.150, request: &quot;GET http://www.proxy-listen.de/azenv.php HTTP/1.0&quot;, upstream: &quot;fastcgi://127.0.0.1:9000&quot;, host: &quot;www.proxy-listen.de&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6B64;&#x9519;&#x8BEF;&#x53EF;&#x80FD;&#x662F;php-fpm&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53C2;&#x7167;<a href="http://blog.csdn.net/zzq900503/article/details/45501797" target="_blank" rel="external">&#x535A;&#x6587;</a>&#xFF0C;&#x8BBE;&#x7F6E;php-fpm&#x5373;&#x53EF;&#x3002;<br>&#x5B89;&#x88C5;nginx&#x548C;php&#x65F6;&#x591A;&#x6570;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#xFF0C;&#x53EA;&#x662F;&#x6CA1;&#x6709;&#x542F;&#x52A8;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6B64;&#x5904;&#x542F;&#x52A8;php-fpm&#x3002;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&#x5207;&#x6362;&#x76EE;&#x5F55;</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/php/etc</span><br><span class="line"><span class="comment">#cpdefault&#x6587;&#x4EF6;&#x4E3A;conf&#x6587;&#x4EF6;</span></span><br><span class="line">cp php-fpm.conf.default php-fpm.conf</span><br><span class="line"><span class="comment">#&#x542F;&#x52A8;php-fpm</span></span><br><span class="line">/usr/<span class="built_in">local</span>/php/sbin/php-fpm</span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x9519;&#x8BEF;&#x63D0;&#x793A;3"><a href="#&#x9519;&#x8BEF;&#x63D0;&#x793A;3" class="headerlink" title="&#x9519;&#x8BEF;&#x63D0;&#x793A;3"></a>&#x9519;&#x8BEF;&#x63D0;&#x793A;3</h4><p>&#x9519;&#x8BEF;&#x63D0;&#x793A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span>/<span class="number">03</span>/<span class="number">16</span> <span class="number">20</span>:<span class="number">18</span>:<span class="number">08</span> [error] <span class="number">15891</span><span class="comment">#0: *34 FastCGI sent in stderr: &quot;Primary script unknown&quot; while reading response header from upstream, client: 1.202.225.154, server: 115.28.75.150, request: &quot;GET / HTTP/1.1&quot;, upstream: &quot;fastcgi://127.0.0.1:9000&quot;, host: &quot;115.28.75.150&quot;</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1161,232 +1409,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/10/Ruby安装/" itemprop="url">
-                  Ruby安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-10T18:06:01+08:00" content="2016-03-10">
-              2016-03-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/10/Ruby安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/Ruby安装/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="ruby&#x5B89;&#x88C5;"><a href="#ruby&#x5B89;&#x88C5;" class="headerlink" title="ruby&#x5B89;&#x88C5;"></a>ruby&#x5B89;&#x88C5;</h4><p>root&#x8D26;&#x53F7;&#x6267;&#x884C;&#xFF1A;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install <span class="keyword">ruby</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="rubygems&#x5B89;&#x88C5;"><a href="#rubyGems&#x5B89;&#x88C5;" class="headerlink" title="rubyGems&#x5B89;&#x88C5;"></a>rubyGems&#x5B89;&#x88C5;</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -<span class="keyword">y</span> rubygems</span><br></pre></td></tr></table></figure>
-<h4 id="nodejs&#x5B89;&#x88C5;"><a href="#nodeJs&#x5B89;&#x88C5;" class="headerlink" title="nodeJs&#x5B89;&#x88C5;"></a>nodeJs&#x5B89;&#x88C5;</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -<span class="keyword">y</span> nodejs</span><br></pre></td></tr></table></figure>
-<h5 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h5><p><a href="http://blog.csdn.net/happyteafriends/article/details/8225611" target="_blank" rel="external">http://blog.csdn.net/happyteafriends/article/details/8225611</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/10/Linux安装Node/" itemprop="url">
-                  Linux安装Node
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-10T18:03:23+08:00" content="2016-03-10">
-              2016-03-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/10/Linux安装Node/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/Linux安装Node/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Node.js&#x7684;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x5E38;&#x89C1;&#x7684;&#x6709;&#x6E90;&#x7801;&#x5B89;&#x88C5;&#x548C;nvm&#x5B89;&#x88C5;&#x4E24;&#x79CD;&#xFF0C;&#x6B64;&#x5904;&#x4E3A;&#x63A8;&#x8350;&#x65B9;&#x5F0F;&#xFF1A;nvm&#x5B89;&#x88C5;</p>
-<h3 id="nvm&#x5B89;&#x88C5;"><a href="#nvm&#x5B89;&#x88C5;" class="headerlink" title="nvm&#x5B89;&#x88C5;"></a>nvm&#x5B89;&#x88C5;</h3><h4 id="&#x5B89;&#x88C5;nvm"><a href="#&#x5B89;&#x88C5;nvm" class="headerlink" title="&#x5B89;&#x88C5;nvm"></a>&#x5B89;&#x88C5;nvm</h4><p>nvm&#x5B89;&#x88C5;&#x53EF;&#x901A;&#x8FC7;crul&#x6216;wget&#x65B9;&#x5F0F;&#x5B89;&#x88C5;&#xFF0C;&#x6B64;&#x5904;&#x4EE5;work&#x8D26;&#x6237;&#x4E3A;&#x4F8B;&#xFF0C;&#x547D;&#x4EE4;&#x4E3A;&#xFF1A;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#curl</span><br><span class="line">curl http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></span><br><span class="line">#wget</span><br><span class="line">wget -qO- http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure></p>
-<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#xFF0C;nvm&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x4F1A;&#x81EA;&#x52A8;&#x5199;&#x5165;&#x5230;.bashrc&#x4E2D;&#xFF0C;&#x4F46;&#x53EF;&#x80FD;&#x672A;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x521D;&#x59CB;&#x5316;&#xFF1A;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> /home/work/.bashrc</span><br></pre></td></tr></table></figure></p>
-<h4 id="&#x5B89;&#x88C5;nodejs"><a href="#&#x5B89;&#x88C5;Node-js" class="headerlink" title="&#x5B89;&#x88C5;Node.js"></a>&#x5B89;&#x88C5;Node.js</h4><p>&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5373;&#x53EF;&#x5B8C;&#x6210;&#x5B89;&#x88C5;<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#&#x5B89;&#x88C5;Node.js</span><br><span class="line">nvm install <span class="number">4</span></span><br><span class="line">#&#x67E5;&#x770B;&#x7248;&#x672C;</span><br><span class="line">node -<span class="keyword">v</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1433,7 +1455,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1441,7 +1463,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1450,7 +1472,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
